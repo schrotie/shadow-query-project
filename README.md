@@ -55,11 +55,11 @@ The build is minimal and completely implemented as `npm` scripts. You should cho
 It uses rollup, babel, and uglify to do its thing. You may continue using this process as long as you keep a single `src/app.mjs` entry point, don't need bundles and don't need more scripts to be built that are included by `index.html`.
 
 The build result consists of three files:
-* full.html  
+* __full.html__  
 full build with babel for IE and other browsers that miss modern ECMAScript features
-* minimal.html  
+* __minimal.html__  
 minimal build with just bundling and uglification for modern browsers
-* polyfill.html  
+* __polyfill.html__  
 build for browsers that support modern ECMAScript but miss some web component tech (e.g. shadow DOM)
 
 Each build result consists of just one HTML file with everything wrapped into it. If you don't go crazy with dependencies you can thus build even complex web-apps at below 100K. If you do need more, though, customize the build.
