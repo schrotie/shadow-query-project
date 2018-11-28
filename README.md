@@ -1,5 +1,5 @@
 # shadow-query-project
-Project template for modern web applications built upon web components, Redux and ShadowQuery.
+Project template for modern web applications built upon [web components](https://www.webcomponents.org/), [Redux](https://redux.js.org/) and [ShadowQuery](https://github.com/schrotie/shadow-query).
 
 This template ships with a `src` tree structured according to the architecture theory explained [here](https://blog.roggendorf.pro/2018/11/17/the-perfect-web-application-framework/) - something you're likely vaguely familiar with if you know React. The code is just a hello world placeholder blown out of proportions by putting it into the structure for a full blown application. It's purpose is solely to create the basic directory tree and give you minimal examples what to put where.
 
