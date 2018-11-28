@@ -1,0 +1,85 @@
+{
+	"name": "shadow-query-project",
+	"config": {
+		"port": "8080",
+		"ttd": true
+	},
+	"version": "0.0.1",
+	"license": "MIT",
+	"author": {
+		"name": "Thorsten Roggendorf",
+		"email": "junk@schrotie.de",
+		"url": "https://roggendorf.pro"
+	},
+	"description": "project template for modern web apps with web components, Redux, ShadowQuery and TDD workflow",
+	"homepage": "https://github.com/schrotie/shadow-query-project#readme",
+	"bugs": {
+		"url": "https://github.com/shrotie/shadow-query-project/issues",
+		"email": "junk@shrotie.de"
+	},
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/schrotie/shadow-query-project"
+	},
+	"files": [
+		"doc/**"
+	],
+	"directories": {
+		"doc": "doc",
+		"test": "test"
+	},
+	"keywords": [
+		"browser",
+		"javascript",
+		"web-components"
+	],
+	"browser": "index.html",
+	"devDependencies": {
+		"@babel/cli": "^7.1.5",
+		"@babel/core": "^7.1.6",
+		"@babel/preset-env": "^7.1.6",
+		"@webcomponents/webcomponentsjs": "^2.2.1",
+		"body-parser": "latest",
+		"chai": "latest",
+		"chokidar": "latest",
+		"connect": "latest",
+		"eslint": "latest",
+		"eslint-config-google": "latest",
+		"eslint-plugin-html": "latest",
+		"jsdoc": "latest",
+		"lsr": "latest",
+		"minimist": "latest",
+		"mocha": "latest",
+		"mocha-headless-chrome": "git+https://github.com/schrotie/mocha-headless-chrome.git",
+		"redux": "latest",
+		"rollup": "^0.67.1",
+		"serve-static": "latest",
+		"shadow-query": "latest",
+		"uglify-es": "latest"
+	},
+	"scripts": {
+		"build":           "npm run build-pre; npm run build-full; npm run build-minimal; npm run build-polyfill;",
+		"build-pre":       "rm -rf build; npm run bundle; npm run babel; npm run uglify-bundle; npm run uglify-babel",
+		"build-ini":       "cp index.html build; npm run remove-watchdog",
+		"build-full":      "npm run build-ini; cp build/src/uglybabel.js  build/src/app.js; npm run insert-build; npm run insert-polyfill; mv build/index.html build/full.html",
+		"build-minimal":   "npm run build-ini; cp build/src/uglybundle.js build/src/app.js; npm run insert-build; npm run remove-polyfill; mv build/index.html build/minimal.html",
+		"build-polyfill":  "npm run build-ini; cp build/src/uglybundle.js build/src/app.js; npm run insert-build; npm run insert-polyfill; mv build/index.html build/polyfill.html",
+		"bundle":          "./node_modules/.bin/rollup --format iife src/app.mjs --file build/src/bundle.js",
+		"babel":           "./node_modules/.bin/babel build/src/bundle.js > build/src/babel.js",
+		"uglify-babel":    "./node_modules/.bin/uglifyjs --mangle --compress --keep-fnames -- build/src/babel.js  > build/src/uglybabel.js",
+		"uglify-bundle":   "./node_modules/.bin/uglifyjs --mangle --compress --keep-fnames -- build/src/bundle.js > build/src/uglybundle.js",
+		"insert-build":    "sed -i -e 's/<script type=\"module\" src=\"src\\/app.mjs\">/<script data-script=\"app\">\\n/' build/index.html; sed -i -e \"/<script data-script=\\\"app\\\">/ r build/src/app.js\" build/index.html",
+		"insert-polyfill": "sed -i -e 's/<script src=\"node_modules\\/@webcomponents\\/webcomponentsjs\\/webcomponents-bundle.js\">/<script data-script=\"polyfill\">\\n/' build/index.html;  sed -i -e \"/<script data-script=\\\"polyfill\\\">/ r node_modules/@webcomponents/webcomponentsjs/webcomponents-bundle.js\" build/index.html",
+		"remove-polyfill": "sed -i -e 's/<script src=\"node_modules\\/@webcomponents\\/webcomponentsjs\\/webcomponents-bundle.js\"><\\/script>//' build/index.html",
+		"remove-watchdog": "sed -i -e 's/<script type=\"module\" src=\"dev\\/client\\/watchdog.mjs\"><\\/script>//' build/index.html",
+
+		"doc": "./node_modules/.bin/jsdoc  -c jsdoc.conf.json",
+		"lint": "eslint . --ext mjs,js,html --ignore-path .gitignore",
+		"start": "node ${PWD}/server.js --port $npm_package_config_port --ttd $npm_package_config_ttd &",
+		"stop": "PID=`npm run --silent pid`; if [ \"$PID\" != \"\" ]; then\nkill $PID\nfi",
+		"test": "PID=`npm run --silent pid`; if [ \"$PID\" != \"\" ]; then\nnpm run run-test\n else\nnode server.js  --port $npm_package_config_port --test true\nfi",
+
+		"pid": "ps aux | grep \"node ${PWD}/server.js\" | grep -v grep | awk '{print $2}'",
+		"run-test": "./node_modules/.bin/mocha-headless-chrome -f http://localhost:$npm_package_config_port/dev/test/"
+	}
+}

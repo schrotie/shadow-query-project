@@ -1,0 +1,116 @@
+{
+	"missing": [],
+	"file": [
+		{
+			"totalBytes": 896,
+			"ranges": [
+				{
+					"start": 0,
+					"end": 896
+				}
+			],
+			"usedBytes": 896,
+			"url": "src/app.mjs",
+			"uncoveredWhiteSpaces": 0,
+			"coveredBytes": 896,
+			"ratio": 1
+		},
+		{
+			"totalBytes": 432,
+			"ranges": [
+				{
+					"start": 0,
+					"end": 432
+				}
+			],
+			"usedBytes": 432,
+			"url": "src/dom/hello.mjs",
+			"uncoveredWhiteSpaces": 0,
+			"coveredBytes": 432,
+			"ratio": 1
+		},
+		{
+			"totalBytes": 63,
+			"ranges": [
+				{
+					"start": 0,
+					"end": 63
+				}
+			],
+			"usedBytes": 63,
+			"url": "src/logic/actions/hello.mjs",
+			"uncoveredWhiteSpaces": 0,
+			"coveredBytes": 63,
+			"ratio": 1
+		},
+		{
+			"totalBytes": 314,
+			"ranges": [
+				{
+					"start": 0,
+					"end": 314
+				}
+			],
+			"usedBytes": 314,
+			"url": "src/logic/connectors/hello.mjs",
+			"uncoveredWhiteSpaces": 0,
+			"coveredBytes": 314,
+			"ratio": 1
+		},
+		{
+			"totalBytes": 3130,
+			"ranges": [
+				{
+					"start": 0,
+					"end": 3092
+				},
+				{
+					"start": 3094,
+					"end": 3130
+				}
+			],
+			"usedBytes": 3128,
+			"url": "src/logic/connectors/reduxConnector.mjs",
+			"uncoveredWhiteSpaces": 2,
+			"coveredBytes": 3130,
+			"ratio": 1
+		},
+		{
+			"totalBytes": 170,
+			"ranges": [
+				{
+					"start": 0,
+					"end": 116
+				},
+				{
+					"start": 118,
+					"end": 140
+				},
+				{
+					"start": 144,
+					"end": 170
+				}
+			],
+			"usedBytes": 164,
+			"url": "src/logic/reducers/hello.mjs",
+			"uncoveredWhiteSpaces": 6,
+			"coveredBytes": 170,
+			"ratio": 1
+		},
+		{
+			"totalBytes": 200,
+			"ranges": [
+				{
+					"start": 0,
+					"end": 200
+				}
+			],
+			"usedBytes": 200,
+			"url": "src/logic/reducers/root.mjs",
+			"uncoveredWhiteSpaces": 0,
+			"coveredBytes": 200,
+			"ratio": 1
+		}
+	],
+	"ratio": 1
+}
