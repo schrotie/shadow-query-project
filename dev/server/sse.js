@@ -19,8 +19,8 @@ class EventHandler {
 			'Cache-Control': 'no-cache',
 		});
 		res.write(`id: ${this._id++}\nevent: connect\ndata:\n\n`);
-		if(path === '/index.html') this._appUI .push(res);
-		if(path === '/dev/test/' ) this._testUI.push(res);
+		if(/^\/(index.html)?$/          .test(path)) this._appUI .push(res);
+		if(/^\/dev\/test\/(index.html)$/.test(path)) this._testUI.push(res);
 	}
 	_notifySrc() {
 		if(!this._appUI.length && !this._testUI.length) return;
